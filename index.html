@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Твоята карта</title>
+
+<style>
+body{
+    font-family: Georgia, serif;
+    background: radial-gradient(circle at top, #120018, #000000);
+    text-align:center;
+    padding:20px;
+    color:#e6d6ff;
+}
+
+/* лек мистичен фон блясък */
+body::before{
+    content:"";
+    position:fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    background: radial-gradient(circle, rgba(120,0,200,0.15), transparent 60%);
+    pointer-events:none;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+    animation: fadeIn 1.2s ease;
+}
+
+img{
+    width:100%;
+    max-width:350px;
+    border-radius:12px;
+    box-shadow: 0 0 25px rgba(160, 80, 255, 0.25);
+    opacity:0;
+    transform: translateY(10px);
+    animation: cardAppear 1.2s ease forwards;
+}
+
+h1{
+    margin-top:20px;
+    text-shadow: 0 0 10px rgba(180, 100, 255, 0.4);
+}
+
+p{
+    font-size:1.1rem;
+    opacity:0;
+    animation: fadeText 1.5s ease forwards;
+    animation-delay:0.4s;
+}
+
+/* анимации */
+@keyframes fadeIn{
+    from{ opacity:0; }
+    to{ opacity:1; }
+}
+
+@keyframes cardAppear{
+    from{ opacity:0; transform:translateY(20px) scale(0.98); }
+    to{ opacity:1; transform:translateY(0) scale(1); }
+}
+
+@keyframes fadeText{
+    from{ opacity:0; transform:translateY(10px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <img id="img">
+    <h1 id="name"></h1>
+    <p id="meaning"></p>
+</div>
+
+<script>
+
+const cards = [
+{ name:"Глупакът", image:"images/fool.jpg", meaning:"Нов път и доверие в неизвестното." },
+{ name:"Магьосникът", image:"images/magician.jpg", meaning:"Имаш всичко нужно да действаш." },
+{ name:"Жрицата", image:"images/priestess.jpg", meaning:"Интуицията знае отговора." },
+{ name:"Императрицата", image:"images/empress.jpg", meaning:"Растеж и изобилие." },
+{ name:"Императорът", image:"images/emperor.jpg", meaning:"Ред и стабилност." },
+{ name:"Влюбените", image:"images/lovers.jpg", meaning:"Избор от сърцето." },
+{ name:"Колесницата", image:"images/chariot.jpg", meaning:"Движение към целта." },
+{ name:"Силата", image:"images/strength.jpg", meaning:"Вътрешна сила и баланс." },
+{ name:"Отшелникът", image:"images/hermit.jpg", meaning:"Време за вътрешно търсене." },
+{ name:"Колелото", image:"images/wheel.jpg", meaning:"Промяна и съдба." },
+{ name:"Справедливост", image:"images/justice.jpg", meaning:"Баланс и истина." },
+{ name:"Обесеният", image:"images/hanged.jpg", meaning:"Нова гледна точка." },
+{ name:"Смъртта", image:"images/death.jpg", meaning:"Край и ново начало." },
+{ name:"Умереност", image:"images/temperance.jpg", meaning:"Баланс и търпение." },
+{ name:"Дяволът", image:"images/devil.jpg", meaning:"Освобождаване от ограничения." },
+{ name:"Кулата", image:"images/tower.jpg", meaning:"Рязка промяна." },
+{ name:"Звездата", image:"images/star.jpg", meaning:"Надежда." },
+{ name:"Луната", image:"images/moon.jpg", meaning:"Интуиция и неяснота." },
+{ name:"Слънцето", image:"images/sun.jpg", meaning:"Радост и яснота." },
+{ name:"Съдът", image:"images/judgement.jpg", meaning:"Пробуждане." },
+{ name:"Светът", image:"images/world.jpg", meaning:"Завършен цикъл." }
+];
+
+const card = cards[Math.floor(Math.random()*cards.length)];
+
+document.getElementById("img").src = card.image;
+document.getElementById("name").textContent = card.name;
+document.getElementById("meaning").textContent = card.meaning;
+
+</script>
+
+</body>
+</html>
